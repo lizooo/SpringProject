@@ -45,16 +45,20 @@ public class StudentController {
 
   @DeleteMapping(path = "/{id}")
   public ResponseEntity<Student> deleteStudent(@PathVariable("id") Integer studentId) {
-   
+
     HttpStatus status = students.remove(studentId) == null ? HttpStatus.NOT_FOUND : HttpStatus.OK;
-   return ResponseEntity.status(status).build();
+    return ResponseEntity.status(status).build();
   }
-  
+
   @PutMapping(path = "/{id}")
-  public Student updateStudent(final @PathVariable("id") Integer studentId, final  @RequestBody Student student ) {
+  public ResponseEntity<Student> uptadeStudent(final @PathVariable("id") Integer studentId,
+      final @RequestBody Student student) {
     student.setId(studentId);
-    return students.put(studentId, student);
+
+    HttpStatus status =
+        students.put(student.getId(), student) == null ? HttpStatus.NOT_FOUND : HttpStatus.OK;
+    return ResponseEntity.status(status).build();
   }
-  
-  
+
+
 }
