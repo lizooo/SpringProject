@@ -30,7 +30,7 @@ public class Student {
   private String firstName;
   private String secondName;
   private int Id;
-  
+
   public int getId() {
     return Id;
   }
@@ -39,5 +39,5 @@ public class Student {
     this.Id = id;
   }
 
- 
+
 }
